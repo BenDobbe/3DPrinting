@@ -5,6 +5,22 @@ import Home from './pages/Home.vue'
 import Contact from './pages/Contact.vue'
 import ARView from './pages/ARView.vue'
 
+window._ = require('three');
+
+Vue.config.ignoredElements = [
+  'a-scene',
+  'a-assets',
+  'a-sky',
+  'a-camera',
+  'a-cursor',
+  'a-animation',
+  'a-entity',
+  'a-box',
+  'a-anchor',
+  'a-torus-knot',
+  'a-camera-static'
+]
+
 //Vue.http.options.root = 'http://3dadmin.local/wp-json';
 
 Vue.config.productionTip = false
