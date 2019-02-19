@@ -2,8 +2,32 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './components/App.vue'
+import './styles/global.scss'
 
 Vue.config.productionTip = false
+
+Vue.config.ignoredElements = [
+  'a-scene',
+  'a-marker',
+  'a-entity',
+  'a-camera'
+]
+
+Vue.component('vue-dino', {
+  template:`
+  <a-marker id="dinoM" preset="hiro">
+    <a-entity id="dinoEntity"></a-entity>
+  </a-marker>`
+})
+
+Vue.component('vue-footer', {
+  template:`
+  <div id="footer">
+  <div class="container">
+    <p class="footer-block">Place sticky footer content here.</p>
+  </div>
+  </div>`
+})
 
 new Vue({
   el: '#app',

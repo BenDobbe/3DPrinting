@@ -1,0 +1,15 @@
+// Variables (which can override bootstrap's variables)
+@import './setup/variables.scss';
+
+// Frameworks - always before site code and other libraries
+@import "~bootstrap/scss/bootstrap.scss";
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
+// Libraries - Always after the main framework, before the site code
+
+
+// Site-specific code
+@import './components/HomePage.scss';
+
+
+

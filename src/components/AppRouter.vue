@@ -5,12 +5,14 @@
 
 
 <script>
+import LandingPage from "./LandingPage"
 import HomePage from "./HomePage"
 import ContactPage from "./ContactPage"
 import ARView from "./ARView"
 
 const routes = {
-  "/": HomePage,
+  "/": LandingPage,
+  "/home": HomePage,
   "/contact": ContactPage,
   "/ARView": ARView
 };

@@ -1,22 +1,16 @@
 <template>
   <!--<a-scene id="scene" embedded arjs='sourceType: webcam;'>
-    <a-marker preset='hiro'>
-      <a-entity gltf-model="url(./assets/suzanna.glb)" scale=""></a-entity>
-    </a-marker>
+    <vue-dino>
+
+    </vue-dino>
     <a-entity camera></a-entity>
-  </a-scene>-->
+  </a-scene> -->
   <div></div>
 </template>
 
 <script>
 export default {
   name: 'ARView',
-  data () {
-    return {
-      models: [
-    ]
-    }
-  },
   mounted () {
     let divWrapper = document.createElement('div')
     divWrapper.setAttribute('class', 'arWrapper')
@@ -52,7 +46,7 @@ export default {
 <style>
 .arWrapper {
   position: fixed;
-  bottom: 10px;
+  top: 0;
   width: 100%;
   text-align: center;
   z-index: 1;
@@ -70,7 +64,4 @@ export default {
 .arLink a{
   display: block;
 }
-
-
-
 </style>
