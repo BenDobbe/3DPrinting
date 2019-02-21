@@ -22,11 +22,11 @@ Vue.component('vue-dino', {
 
 Vue.component('vue-footer', {
   template:`
-  <div id="footer">
+  <footer id="footer" class="footer">
   <div class="container">
-    <p class="footer-block">Place sticky footer content here.</p>
+    <p class="footer-block">3D Printing - Arteveldehogeschool</p>
   </div>
-  </div>`
+  </footer>`
 })
 
 new Vue({

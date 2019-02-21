@@ -18,18 +18,28 @@
         <div class="row text-center align-items-center">
             <div class="col-sm">
                 <h2 class="">Masterclass 1</h2>
+                <br>
                 <p class="lead mb-0">Wooop woop</p>
-                <a class="myButton" @click="goTo('/')">Learn more</a>
+                <h3>Woop di scoop</h3>
+                <br>
+                <div class="flex"><a class="bttn" @click="goTo('/')">Learn more</a></div>
             </div>
             <div class="col-sm">
                 <h2 class="">Masterclass 2</h2>
+                <br>
                 <p class="lead mb-0">Wooop woop</p>
-                <a class="myButton" @click="goTo('/')">Learn more</a>
+                <h3>Woop di scoop</h3>
+                <br>
+                <div class="flex"><a class="bttn" @click="goTo('/')">Learn more</a></div>
+                
             </div>
             <div class="col-sm">
                 <h2 class="">Summerclass</h2>
+                <br>
                 <p class="lead mb-0">Wooop woop</p>
-                <a class="myButton" @click="goTo('/')">Learn more</a>
+                <h3>Woop di scoop</h3>
+                <br>
+                <div class="flex"><a class="bttn" @click="goTo('/')">Learn more</a></div>
             </div>
         </div>
     </div>
@@ -54,8 +64,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped>
 @import "../styles/components/HomePage.scss";
+
+.nav-link{
+  color: white;
+}
 </style>
 
 <style scoped>

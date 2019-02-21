@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-light navbar-expand-md position-absolute text-white">
+    <nav class="navbar navbar-light navbar-expand-md position-absolute" id="nav">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,11 +49,38 @@ nav {
   color: white;
 }
 
-nav a{
+.nav-link{
   color: white !important;
+  position: relative;
 }
 
-a:hover {
+.nav-link:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $maroonflush;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-link:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.navbar-brand {
   cursor: pointer;
 }
 
@@ -63,5 +90,6 @@ a:hover {
 
 #footer {
   margin-top: 100px;
+  height: 10vh;
 }
 </style>
