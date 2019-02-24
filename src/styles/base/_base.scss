@@ -1,0 +1,45 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+input,
+textarea {
+    border: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* Temp Container */
+
+.container {
+    width: 100%;
+    max-width: 1640px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}

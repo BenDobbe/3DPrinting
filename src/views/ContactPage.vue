@@ -63,14 +63,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/components/ContactPage.scss";
+// .navbar a {
+//   color: $darkgrey !important;
+// }
 
-.navbar a {
-  color: $darkgrey !important;
-}
-</style>
-
-<style scoped>
 .footer {
   position: fixed;
   left: 0;

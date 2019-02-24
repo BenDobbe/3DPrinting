@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './components/App.vue'
+import router from './routes'
 import './styles/global.scss'
 
 Vue.config.productionTip = false
@@ -31,5 +32,6 @@ Vue.component('vue-footer', {
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App),
 }).$mount('#app')

@@ -97,8 +97,4 @@ export default {
 
 <style scoped>
 @import "../styles/components/LandingPage.scss";
-
-nav {
-  display: none;
-}
 </style>
