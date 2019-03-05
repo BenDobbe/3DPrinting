@@ -1,16 +1,40 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600,700,900');
-@import '../abstracts/variables';
+ @import '../abstracts/variables';
 
-body {
-    font-family: sans-serif;
+html {
+    font-size: 100%;
+    font-family: 'Source Sans', sans-serif;
 } 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
 
 h1 {
     color: $color-secondary;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1.1;
-    letter-spacing: 3px;
+}
+
+h2 {
+    color: $color-secondary;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+h3 {
+    color: $color-green;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
 }

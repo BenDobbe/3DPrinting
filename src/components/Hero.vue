@@ -22,7 +22,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .hero {
         width: 100%;
         height: 100vh;
@@ -38,7 +38,7 @@
         }
 
         &__intro {
-            margin-bottom: 5rem;
+            margin-bottom: 2.5rem;
         }
 
         &__image {
