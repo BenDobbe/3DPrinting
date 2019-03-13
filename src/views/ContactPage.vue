@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="section contact">
+        <section class="section contact m-top">
             <div class="container flex">
                 <h2 class="text-center lowercase">Nog een vraag? Laat het ons weten!</h2>
                 <div class="contact__column col-4">

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 
 // Import Page Components
 import HomePage from '@/views/HomePage.vue';
+import ClassesPage from '@/views/ClassesPage.vue';
 import ShowcasePage from '@/views/ShowcasePage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 
@@ -16,6 +17,11 @@ export default new VueRouter({
             path: '/home',
             name: 'home',
             component: HomePage
+        },
+        {
+            path: '/classes',
+            name: 'classes',
+            component: ClassesPage
         },
         {
             path: '/showcase',

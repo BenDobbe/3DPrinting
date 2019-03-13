@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="showcase">
+        <section class="showcase m-top">
             <div class="container">
                 <h2>Showcase</h2>
                 <div class="gallery">
@@ -43,7 +43,4 @@
     }
 </script>
 <style lang="scss" scoped>
-    .showcase {
-        margin-top: 7.5rem;
-    }
 </style>
