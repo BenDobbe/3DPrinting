@@ -1,15 +1,10 @@
 <template>
     <section class="banner">
-        <!-- <div class="banner__content">
-            <h2 class="banner__title">
-                Bekijk onze masterclasses
-            </h2>
-        </div> -->
         <div class="video-wrapper">
             <div class="overlay"></div>
             <vue-video></vue-video>
         </div>
-        
+        <div class="banner__bg-image"></div>
     </section>
 </template>
 
@@ -30,10 +25,29 @@
         background: #fff;
         height: 400px;
 
+        @include breakpoint(tablet) {
+            height: 300px;
+        }
+
+        &__bg-image {
+            display: none;
+            background: url('../assets/images/masterclass2.jpg') no-repeat;
+            background-size: cover;
+
+            @include breakpoint(tablet) {
+                display: block;
+                height: 300px;
+            }
+        }
+
         .video-wrapper {
             position: relative;
             height: 400px;
             overflow: hidden;
+
+            @include breakpoint(tablet) {
+                display: none;
+            }
         }
 
         .overlay  {
@@ -46,6 +60,8 @@
             opacity: 0.5;
             z-index: 1;
         }
+
+        
     }
 </style>
 

@@ -53,10 +53,10 @@ export default {
     let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmVuZG9iYmUiLCJhIjoiY2pzZGwxbmttMHYxYzN6bWw4c3Y1eDllaSJ9.h_awGMrprXjPMxaxtpZHFg';
     let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/bendobbe/cjsdme5bm12zb1fqjxrfqpp6m',
-    center: [3.726710, 51.041052],
-    zoom: 15.5
+      container: 'map',
+      style: 'mapbox://styles/bendobbe/cjsdme5bm12zb1fqjxrfqpp6m',
+      center: [3.726710, 51.041052],
+      zoom: 15.5
     });
   }
 }

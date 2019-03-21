@@ -1,6 +1,6 @@
 <template>
     <li>
-        <router-link :to="slug">
+        <router-link class="nav__link" :to="slug">
             <slot></slot>
         </router-link>  
     </li>
@@ -14,7 +14,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

@@ -1,46 +1,52 @@
 <template>
     <main>
         <section class="showcase m-top">
-            <div class="container">
-                <h2>Showcase</h2>
-                <div class="gallery">
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551582046-52be1109d772?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551543733-afc219280999?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551567676-94fef02ca1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551582046-52be1109d772?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551543733-afc219280999?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551567676-94fef02ca1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551582046-52be1109d772?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551543733-afc219280999?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-                    </div>
-                    <div class="gallery__item">
-                        <img src="https://images.unsplash.com/photo-1551567676-94fef02ca1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                    </div>
+            <div class="header">
+                <div class="container">
+                    <h2>Showcase</h2>
                 </div>
             </div>
+            <!-- TODO: Move inline styling -->
+            <div class="container m-top" style="margin-bottom: 4.5rem">
+                <vue-tag name="ALL" :active="isActive" ></vue-tag>
+                <vue-tag name="3D"></vue-tag>
+                <vue-tag name="PRINT"></vue-tag>
+                <vue-tag name="VORONOI"></vue-tag>
+                <vue-gallery></vue-gallery>
+            </div>
         </section>
-        
     </main>
 </template>
 <script>
-    export default {
-        name: 'ShowcasePage',
+import Gallery from '../components/Gallery';
+import Tag from '../components/Tag';
+
+export default {
+    name: 'ShowcasePage',
+    components: {
+        'vue-gallery': Gallery,
+        'vue-tag': Tag,
+    },
+    data () {
+        return {
+            isActive: true,
+        }
     }
+}
 </script>
+
 <style lang="scss" scoped>
+    .header {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: grey;
+        
+        & > .container > h2 {
+            color: white;
+        }
+    }
 </style>

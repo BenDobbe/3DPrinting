@@ -1,8 +1,10 @@
 <template>
     <main>
-        <section class="section contact m-top">
+        <section class="section contact m-top" style="margin-top: 8rem">
+            <div class="container">
+                <h2 class="lowercase">Nog een vraag? Laat het ons weten!</h2>
+            </div>
             <div class="container flex">
-                <h2 class="text-center lowercase">Nog een vraag? Laat het ons weten!</h2>
                 <div class="contact__column col-4">
                     <div class="contact__block">
                         <h4>Tom Neuttiens</h4>
@@ -49,7 +51,10 @@
             </div>
         </section>
         <section class="section map">
-            <img src="../assets/images/map--gray.png" style="width: 100%">
+            <vue-map
+                :accessToken="token"
+                :mapOptions="mapOptions"
+            ></vue-map>
         </section>
         <section class="section contact-form">
             <h3>Contactformulier</h3>
@@ -62,7 +67,7 @@
                     <label for="subject">Onderwerp</label>
                     <input type="text" class="form-control" name="subject">
                 </div>
-                <div class="form-group">
+                <div class="form-group"><link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
                     <label for="message">Bericht</label>
                     <textarea class="form-control" name="message" rows="10"></textarea>
                 </div>
@@ -73,17 +78,31 @@
 </template>
 
 <script>
-    export default {
-        name: 'ContactPage',
+import AppMap from '../components/Map';
+import { config } from '../config/';
+
+export default {
+    name: 'ContactPage',
+    components: {
+        'vue-map': AppMap
+    },
+    data () {
+        return {
+            token: config.MAP_ACCESS_TOKEN,
+            mapOptions: {
+                container: 'red',
+                style: 'mapbox://styles/mapbox/light-v9',
+                center: [3.726710, 51.041052],
+                zoom: 15,
+            }
+        }
     }
+}
 </script>
 
-<style style="scss" scoped>
+<style lang="scss" scoped>
     .orange {
-        color: orange;
-    }
-    .contact {
-        margin-top: 7.5rem;
+        color: $color-primary;
     }
     .lowercase {
         text-transform: inherit;
@@ -92,6 +111,10 @@
         max-width: 560px;
         margin-left: auto;
         margin-right: auto;
+
+        @include breakpoint(mobile) {
+            padding: 0 1.5rem;
+        }
     }
     .contact-form > h3 {
         margin-bottom: 4rem;
