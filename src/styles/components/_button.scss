@@ -1,0 +1,70 @@
+@import '../abstracts/variables';
+
+.btn {
+    display: inline-block;
+    width: auto;
+    padding: 0.50rem 1.50rem;
+    border-radius: $border-radius-primary;
+    text-align: center;
+    color: inherit; 
+    cursor: pointer; 
+    transition: all .2s ease;
+
+    &--primary {
+        background-color: #fff;
+        border: 3px solid $color-secondary;
+        color: $color-secondary;
+        box-shadow: 2px 2px $color-secondary;
+
+        &:hover {
+            box-shadow: 4px 4px $color-secondary;
+        }
+    }
+
+    &--secondary {
+        background-color: #fff;
+        border: 3px solid $color-green;
+        color: $color-green;
+        box-shadow: 2px 2px $color-green;
+
+        &:hover {
+            box-shadow: 4px 4px $color-green;
+        }
+    }
+
+    &--nav {
+        padding: 1rem 2rem;
+        color: $color-primary;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(12,12,13,.1);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, .9);
+            box-shadow: 0 4px 6px rgba(12,12,13,.1);
+        }
+    }
+
+    &--link {
+        position: relative;
+        padding: 0;
+        color: $color-red;
+
+        &:after {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: $color-red;
+            content: '';
+            opacity: 1;
+            transition: all .2s ease-in-out;
+            transition-property: width;
+            transform: translateY(5px);
+        }
+
+        &:hover:after {
+            width: 100%;
+        }
+    }
+}

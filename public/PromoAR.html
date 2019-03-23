@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>3D</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+    <style>.arWrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        color: grey;
+      
+      }
+      .arLink {
+        color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(127, 127, 127, 0.5);
+        display: inline-block;
+        padding: 0.5em;
+        margin: 0.5em;
+        text-align: left;
+      }
+      
+      .arLink a{
+        display: block;
+      }</style>
+  </head>
+  <body style='margin : 0px; overflow: hidden;'>
+    <div class="arWrapper">
+      <div class="arLink">
+        <a href="https://www.gdm.gent/#/home">Continue</a>
+      </div>
+    </div>
+    <a-scene embedded renderer='antialias: true; alpha: true; logarithmicDepthBuffer: true' arjs="debugUIEnabled: false;">
+      <a-assets>
+        <a-asset-item id="dino" src="./assets/Dino3.glb"></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="custom" type="pattern" url="./assets/pattern-dino.patt">
+          <a-entity gltf-model="#dino" position="-1 0 0" animation-mixer="loop: repeat;" scale="2 2 2" rotation="-90 90 -90"></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+        // Workaround for an AR.js bug (https://github.com/jeromeetienne/AR.js/issues/410)
+        const sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('loaded', () => {
+            sceneEl.camera = new THREE.PerspectiveCamera();
+        });
+    </script>
+  </body>
+</html>

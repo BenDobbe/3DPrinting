@@ -1,0 +1,27 @@
+
+/* 
+// Quickly apply base font styling across the site
+// font-size - color - font-weight - line-height - letter-spacing 
+*/
+@mixin font-styles($size: false, $color: false, $weight: false,  $lh: false, $spacing: false) {
+    @if $size { font-size: $size; }
+    @if $color { color: $color; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+    @if $spacing { letter-spacing: $spacing; }
+}
+
+/* 
+// Breakpoint mixin for responsive design
+*/
+@mixin breakpoint($point) {
+    @if $point == laptop {
+        @media (max-width: $grid-container-width) { @content ; }
+    }
+    @else if $point == tablet {
+        @media (max-width: 50em) { @content ; }
+    }
+    @else if $point == mobile {
+        @media (max-width: 37.5em)  { @content ; }
+    }
+}
