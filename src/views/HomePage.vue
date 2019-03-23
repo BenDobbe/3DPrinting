@@ -73,13 +73,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-.intro {
-  margin-top: 1000px;
-}
-</style>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .intro {
       margin-top: 1000px;
 
