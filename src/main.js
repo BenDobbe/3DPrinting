@@ -1,18 +1,19 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import './styles/global.scss'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './routes'
-import './styles/global.scss'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFacebookSquare, faInstagram, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faFacebookSquare, faInstagram, faTwitterSquare)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-
+import VueCarousel from 'vue-carousel'
+import VueScrollReveal from 'vue-scroll-reveal';
+ 
+// Using ScrollReveal's default configuration
+Vue.use(VueScrollReveal, {
+  duration: 2000,
+  distance: '40px'
+});
+ 
 Vue.config.productionTip = false
 
 Vue.config.ignoredElements = [
@@ -29,14 +30,7 @@ Vue.component('vue-dino', {
   </a-marker>`
 })
 
-Vue.component('vue-footer', {
-  template:`
-  <footer id="footer" class="footer">
-  <div class="container">
-    <p class="footer-block">3D Printing - Arteveldehogeschool</p>
-  </div>
-  </footer>`
-})
+Vue.use(VueCarousel);
 
 new Vue({
   el: '#app',

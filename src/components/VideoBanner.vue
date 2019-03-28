@@ -21,12 +21,12 @@
 
 <style lang="scss">
     .banner {
-        margin-top: 4.6rem;
+        margin-top: 6rem;
         background: #fff;
-        height: 400px;
+        height: 300px;
 
         @include breakpoint(tablet) {
-            height: 300px;
+            height: 200px;
         }
 
         &__bg-image {
@@ -36,13 +36,13 @@
 
             @include breakpoint(tablet) {
                 display: block;
-                height: 300px;
+                height: 200px;
             }
         }
 
         .video-wrapper {
             position: relative;
-            height: 400px;
+            height: 300px;
             overflow: hidden;
 
             @include breakpoint(tablet) {
@@ -59,9 +59,7 @@
             background-color: #141414;
             opacity: 0.5;
             z-index: 1;
-        }
-
-        
+        }       
     }
 </style>
 

@@ -11,7 +11,7 @@
             <p v-html="item.content.rendered"></p>
         </section>
         <section class="class__footer">
-            <a class="btn btn--link">Bekijk deze class</a>
+            <a class="btn btn--link" href="https://www.arteveldehogeschool.be/opleidingen/bijscholingen-en-studiedagen/masterclasses-3d-modeling-printing">Bekijk deze class</a>
         </section>
     </article>
 </template>
@@ -66,8 +66,16 @@
         // }
 
         &__thumbnail {
-            height: 256px;
+            background: $color-grey;
+            display: block;
+            height: 250px;
             overflow: hidden;
+
+            & > img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
         }
 
         &__content { 

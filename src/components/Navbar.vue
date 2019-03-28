@@ -1,13 +1,13 @@
 <template>
-    <div class="navbar__sticky">
+    <div class="navbar__sticky" id="nav">
         <div class="container--wide">
             <nav class="navbar">
-                <span class="navbar-toggle" id="js-navbar-toggle">
-                    <i>x</i>
+                <span class="navbar-toggle" id="navbar-toggle" @click="onHamburgerClick">
+                    <i class="fas fa-bars"></i>
                 </span>
                 <router-link to="home">
                     <h3 class="navbar__brand">
-                        3D Print
+                        3D GDM
                     </h3>
                 </router-link>
                 <ul class="nav">
@@ -15,7 +15,6 @@
                     <navbar-link slug="classes" class="nav__item">Masterclasses</navbar-link>
                     <navbar-link slug="showcase" class="nav__item">Showcase</navbar-link>
                     <navbar-link slug="contact" class="nav__item">Contact</navbar-link>
-                    <a class="btn btn--nav" href="https://www.arteveldehogeschool.be/opleidingen/bijscholingen-en-studiedagen/masterclasses-3d-modeling-printing">Inschrijven</a>
                 </ul>
             </nav>
         </div>
@@ -30,6 +29,34 @@ export default {
     components: {
         NavbarLink
     },
+    mounted() {
+        this.$nextTick(() => {
+            window.addEventListener("scroll", this.onScrollNavbar)
+        })
+    },
+    methods: {
+        onScrollNavbar() {
+            const navbar = document.getElementById("nav")
+            const nav_classes = navbar.classList;
+
+            if(document.documentElement.scrollTop >= 75) {
+                if (nav_classes.contains("shrink") === false) {
+                    nav_classes.toggle("shrink");
+                }
+            }
+            else {
+                if (nav_classes.contains("shrink") === true) {
+                    nav_classes.toggle("shrink");
+                }
+            }
+        },
+        onHamburgerClick() {
+            const navBarToggle = document.getElementById('navbar-toggle');
+            const mainNav = document.querySelector('.nav');
+
+            mainNav.classList.toggle('is-open');
+        }
+    }
 }
 </script>
 
@@ -40,11 +67,10 @@ export default {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        
 
         @include breakpoint(mobile) {
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: flex-start;
         }
 
@@ -52,17 +78,36 @@ export default {
             z-index: 999;
             width: 100%;
             position: fixed;
+            padding: 0.75rem 0;
             top: 0;
             left: 0;
-            background-color: $color-primary;
-            box-shadow: 0 2px 4px rgba(50,50,50,.1);
+            transition: all .3s ease-in-out;
+            
+            @include breakpoint(mobile) {
+                padding: 0;
+                background-color: $color-secondary; 
+            }
+
+            &.shrink {
+                padding: 0rem 0;
+                background-color: $color-secondary;   
+                
+            }
+
+            &.shrink .navbar__brand, &.shrink .nav {
+                color: white;
+            }
         }
 
         &__brand {
-            color: #fff;
-            font-weight: 700;
+            color: $color-text;
+            font-weight: 900;
             font-size: 1.5rem;
             transition: all .2s ease-in-out;
+            
+            @include breakpoint(mobile) {
+                color: white;
+            }
 
             &:hover {
                 color: $color-secondary;
@@ -75,16 +120,17 @@ export default {
         justify-content: flex-end;
         align-items: center;
         font-weight: 700;
-        color: white;
-        
+        color: $color-text;
+        transition: all .3s ease-in-out;
         @include breakpoint(mobile) {
             display: none;
-
+            
             width: 100%;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 0;
+            color: white;
         }
 
         &__item {
@@ -105,54 +151,14 @@ export default {
                 }
             }
         }    
-        
-        &__link {
-            position: relative;
-            
-            &.is-selected {
-                &:after {
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    height: 3px;
-                    background: #fff;
-                    content: '';
-                    opacity: 1;
-                    transition-property: width;
-                    transform: translateY(5px);
-                }
-            }   
-
-            &:after {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 0;
-                height: 3px;
-                background: #fff;
-                content: '';
-                opacity: 1;
-                transition: all .2s ease-in-out;
-                transition-property: width;
-                transform: translateY(5px);
-            }
-
-            &:hover:after {
-                width: 100%;
-            }
-        }
-
-        & > .btn {
-            @include breakpoint(mobile) {
-                display: none;
-            }
-        }
     }
 
     .navbar-toggle {
         display: none;
-
+        color: white;
+        margin-top: 3px;
+        font-size: 1.2rem;    
+    
         @include breakpoint(mobile) {
             display: block;
 
@@ -160,5 +166,9 @@ export default {
             top: 1.5rem;
             right: 0;
         }
+    }
+
+    .is-open {
+        display: block;
     }
 </style>

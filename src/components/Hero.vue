@@ -1,6 +1,6 @@
 <template>
     <section class="hero">
-        <div class="hero__block--left">
+        <div class="hero__block--left" v-scroll-reveal.reset="{ distance: '40px', origin: 'left', mobile: false }">
             <div class="hero__content">
                 <h1 class="hero__title">3D Modeling <br>&amp; Printing</h1>
                 <p class="hero__intro text--bold">
@@ -10,8 +10,8 @@
             </div>
         </div>
         <div class="hero__block--right"></div>
-        <div class="hero__image">
-            <img src="../assets/images/hero-model-orange.png" alt="3D Model">
+        <div class="hero__image" v-scroll-reveal.reset="{ origin: 'bottom' }">
+            <img src="../assets/images/dino.png" alt="3D Model">
         </div>
     </section>
 </template>
@@ -29,6 +29,7 @@
         display: flex;
         
         @include breakpoint(mobile) {
+            margin-top: 3rem;
             height: 600px;
             flex-direction: column; 
             justify-content: center;
@@ -50,6 +51,10 @@
         &__intro {
             max-width: 450px;
             margin-bottom: 3rem;
+            font-weight: 500;
+            font-size: 1.2em;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
 
             @include breakpoint(mobile) {
                 max-width: none;
@@ -61,7 +66,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -45%);
+            transform: translate(-40%, -45%);
             animation: floating 4000ms ease-in-out 0s infinite normal;
 
             @include breakpoint(mobile) {
@@ -91,13 +96,13 @@
 
     @keyframes floating {
         0% {
-            transform: translate(-50%, -45%);	
+            transform: translate(-40%, -45%);	
         }
         50% {
-            transform: translate(-50%, -48%);	
+            transform: translate(-40%, -48%);	
         }	
         100% {
-            transform: translate(-50%, -45%);
+            transform: translate(-40%, -45%);
         }			
     }
 </style>

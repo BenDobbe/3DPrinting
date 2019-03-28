@@ -23,12 +23,12 @@
 
     &--secondary {
         background-color: #fff;
-        border: 3px solid $color-green;
-        color: $color-green;
-        box-shadow: 2px 2px $color-green;
+        border: 3px solid $color-primary;
+        color: $color-primary;
+        box-shadow: 2px 2px $color-primary;
 
         &:hover {
-            box-shadow: 4px 4px $color-green;
+            box-shadow: 4px 4px $color-primary;
         }
     }
 
@@ -47,7 +47,7 @@
     &--link {
         position: relative;
         padding: 0;
-        color: $color-red;
+        color: $color-secondary;
 
         &:after {
             position: absolute;
@@ -55,7 +55,7 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: $color-red;
+            background: $color-secondary;
             content: '';
             opacity: 1;
             transition: all .2s ease-in-out;

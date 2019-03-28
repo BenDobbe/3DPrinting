@@ -3,7 +3,7 @@
         <section class="classes">
             <vue-banner></vue-banner>
             <div class="container">
-                <div class="class__wrapper">
+                <div class="class__wrapper" v-scroll-reveal="{ duration: 800 }">
                     <h3>Beschikbare classes</h3>
                     <class-card-list></class-card-list>
                 </div>
@@ -29,12 +29,11 @@ export default {
     .classes {
         margin-bottom: 3rem;
     }
+    
     .class__wrapper {
         background: #fff;
-        padding-top: 1px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        border-radius: 8px;
+        padding: 1px 2rem 0 2rem;
+        border-radius: $border-radius-primary;
         margin-top: -50px;
         z-index: 999;
     }

@@ -5,7 +5,7 @@
                 v-for="image in images"
                 :key="image.id"
             >
-                <img class="gallery__image" src="https://images.unsplash.com/photo-1542834759-d9f324e7764b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+                <img class="gallery__image" :src="image.acf.upload_image.sizes.large" :data-category="image.categories[0]">
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         async fetchImages() {
-            const { data } = await RestService.get('/classes?_embed');            
+            const { data } = await RestService.get('/gallery_images?_embed');          
             this.images = data;
         }
     }
@@ -41,9 +41,10 @@ export default {
 <style lang="scss" scoped>
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         grid-gap: 1em;
-    
+        margin-bottom: 4rem;
+
         &__item {
             // max-height: 275px;
             overflow: hidden;
@@ -51,9 +52,9 @@ export default {
         
         &__image {
             width: 100%;
-            height: auto;
+            height: 300px;
             max-width: none;
-            // object-fit: cover;
+            object-fit: cover;
         }
     }
 </style>

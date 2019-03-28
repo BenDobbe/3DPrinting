@@ -14,8 +14,11 @@
             </div>
             <div class="col-4">
                 <h4 class="footer__title">Volg ons</h4>
-                <p>
-                  We posten leuke projecten, evenementen en opportuniteiten...
+                <p class="footer__social">
+                    We posten leuke projecten, evenementen en opportuniteiten...<br>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </p>
             </div>
         </div>
@@ -33,7 +36,7 @@ export default {
     .footer {
         border-top: 1px solid #eee;
         border-bottom: 6px solid $color-primary;
-        padding: 5rem 2rem;
+        padding: 3rem 2rem;
 
         @include breakpoint(mobile) {
             padding: 2rem 0;
@@ -45,6 +48,18 @@ export default {
             @include breakpoint(mobile) {
                 margin-top: 2rem;
                 margin-bottom: 1.5rem;
+            }
+        }
+
+        &__social {
+            & i {
+                margin-top: 10px;
+                font-size: 1.5rem;
+                transition: all .3s ease;
+
+                &:hover {
+                    color: $color-primary;
+                }
             }
         }
     }

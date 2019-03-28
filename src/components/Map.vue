@@ -86,8 +86,8 @@ export default {
         }
     }
     .marker {
-            background: red;
-            width: 50px;
-            height: 50px;
-        }
+        background: red;
+        width: 50px;
+        height: 50px;
+    }
 </style>

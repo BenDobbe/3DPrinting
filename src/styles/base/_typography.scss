@@ -20,6 +20,10 @@ h6 {
 h1 {
     // Size, Color, Weight, Line-height, Spacing
     @include font-styles(3.5rem, $color-secondary, $font-heading-weight);
+
+    @include breakpoint(mobile) {
+        @include font-styles(2.5rem, $color-secondary, $font-heading-weight);
+    }
 }
 
 h2 {
@@ -27,11 +31,12 @@ h2 {
 }
 
 h3 {
-    @include font-styles(2rem, $color-green, $font-heading-weight - 100);
+    @include font-styles(2rem, $color-primary, $font-heading-weight - 100);
 }
 
 h4 {
     @include font-styles(1.8rem, $color-text, $font-heading-weight - 100);
+    margin-bottom: 1rem;
 }
 
 p {

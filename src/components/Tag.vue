@@ -1,5 +1,5 @@
 <template>
-    <span :class="[active ? 'is-active tag' : 'tag']" @click="active = !active">{{ name }}</span>
+    <span :class="[active ? 'is-active tag' : 'tag']" @click="setFilter(category)">{{ name }}</span>
 </template>
 
 <script>
@@ -12,6 +12,20 @@ export default {
         },
         active: {
             type: Boolean,
+        },
+        category: {
+            type: Number
+        }
+    },
+    data() {
+        return {
+            currentFilter: 0,
+        }
+    },
+    methods: {
+        setFilter(filter) {
+            this.currentFilter = filter;
+            console.log(this.currentFilter);
         }
     }
 }

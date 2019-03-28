@@ -11,7 +11,7 @@
                         <p>
                             <span>Docent 3D Modeling</span>
                             <br> 
-                            <a class="orange">mail@example.be</a> 
+                            <a class="orange">tom.neuttiens@arteveldehs.be</a> 
                         </p>
                     </div>
                     <div class="contact__block">
@@ -19,7 +19,7 @@
                         <p>
                             <span>Docent 3D Modeling</span>
                             <br> 
-                            <a class="orange">mail@example.be</a> 
+                            <a class="orange">inge.sintobin@arteveldehs.be</a> 
                         </p>
                     </div>
                 </div>
@@ -36,15 +36,17 @@
                         <p class="orange">
                             +32 45 41 25 21
                             <br>
-                            <a>mail@example.com</a>
                         </p>
                     </div>
                 </div>
                 <div class="contact__column col-4">
                     <div class="contact__block">
                         <h4>Sociale Media</h4>
-                        <p>
-                            Volg ons en kom meer te weten
+                        <p class="contact__social">
+                            Volg ons en kom meer te weten<br>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -139,5 +141,16 @@ export default {
     }
     .form {
         text-align: center;
+    }
+    .contact__social {
+        & i {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            transition: all .3s ease;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
     }
 </style>
