@@ -54,5 +54,5 @@ This command creates a directory `dist` under the client folder.
 
 ## Authors
 
-Cedric Vanhaegenberg (Website + Headless CMS) | [cedrvanh](https://github.com/cedrvanh)
-Ben Dobbelaere | (Augmented Reality) [bendobbe](https://github.com/bendobbe)
+- Cedric Vanhaegenberg (Website + Headless CMS) | [cedrvanh](https://github.com/cedrvanh)
+- Ben Dobbelaere (Augmented Reality) | [bendobbe](https://github.com/bendobbe)
