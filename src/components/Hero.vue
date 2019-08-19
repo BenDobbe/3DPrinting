@@ -1,53 +1,120 @@
 <template>
-    <section class="hero">
-        <div class="hero__block--left" v-scroll-reveal.reset="{ distance: '40px', origin: 'left', mobile: false }">
+    <header class="beer-header">
+        <div class="beer-slider">
+            <div class="pat1" :style="imageRight"></div>
+            <div class="beer-reveal">
+                <div class="pat2" :style="imageLeft"></div>
+            </div>
+        </div>
+        <section class="hero" v-scroll-reveal.reset="{ distance: '40px', origin: 'left', mobile: false }">
             <div class="hero__content">
-                <h1 class="hero__title">3D Modeling <br>&amp; Printing</h1>
+                <h1 class="hero__title">
+                    <span class="hero__title--left">3D</span>
+                    <span class="hero__title--right">Modeling Printing</span>
+                </h1>
                 <p class="hero__intro text--bold">
                     In de masterclasses 3D modeling &amp; printing van de Arteveldehogeschool leer je stap voor stap 3D objecten creëren en printen. 
                 </p>
-                <router-link to="classes" class="btn btn--primary">Ontdek de opleiding</router-link>
+                <router-link to="classes" class="hero__content--link btn btn--primary">Ontdek de opleiding</router-link>
             </div>
-        </div>
-        <div class="hero__block--right"></div>
-        <div class="hero__image" v-scroll-reveal.reset="{ origin: 'bottom' }">
-            <img src="../assets/images/dino.png" alt="3D Model">
-        </div>
-    </section>
+        </section>
+    </header>
 </template>
 
 <script>
+    import BeerSlider from 'beerslider';
+    
     export default {
-
+        props: {
+            images: Array,
+        },
+        mounted () {
+            new BeerSlider(document.querySelector('.beer-slider'));
+        },
+        computed: {
+            imageLeft() {
+                return "background-image: url('" + this.images[0].acf.slider_image_left.url + "')";
+            },
+            imageRight() {
+                return "background-image: url('" + this.images[0].acf.slider_image_right.url + "')";
+            } 
+        }
     }
 </script>
 
-<style lang="scss" scoped>
-    .hero {
+<style lang="scss">
+    @import '../../node_modules/beerslider/dist/BeerSlider.css';
+
+    .beer-slider {
+        position: absolute;
         width: 100%;
+        height: 100%;
+    }
+    
+    .beer-header {
+        position: relative;
         height: 100vh;
         display: flex;
-        
+        align-items: center;
+    }
+    
+    .beer-handle {
+        z-index: 99;
+
         @include breakpoint(mobile) {
-            margin-top: 3rem;
-            height: 600px;
-            flex-direction: column; 
+            top: 25%;
+        }
+    }
+
+    .pat1 {
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .pat2 {
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .hero {
+        display: flex;
+        position: relative;
+        z-index: 9;
+        
+        &__title {
+            margin-bottom: 0;
+            display: flex;
+            color: $color-text;
             justify-content: center;
             align-items: center;
+
+            &--left, &--right {
+                display: block;
+            }
+
+            &--left {
+                font-size: 2em;
+                padding-right: 1rem;
+            }
+
+            &--right {
+                font-size: 0.8em;
+            }
         }
-        
+
         &__content {
             margin-left: 5rem;
             font-weight: 700;
             line-height: 1.4;
             max-width: 550px;
 
-            @include breakpoint(mobile) {
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
+            @include breakpoint(tablet) {
+                margin-left: 1rem;
             }
+
         }
 
+        
         &__intro {
             max-width: 450px;
             margin-bottom: 3rem;
@@ -68,25 +135,6 @@
             left: 50%;
             transform: translate(-40%, -45%);
             animation: floating 4000ms ease-in-out 0s infinite normal;
-
-            @include breakpoint(mobile) {
-                display: none;
-            }
-        }
-
-        &__block--left {
-            display: flex;
-            align-items: center;
-            flex: 1 50%;
-
-            @include breakpoint(mobile) {
-                flex: 1 100%;
-            }
-        }
-
-        &__block--right {
-            flex: 1 50%;
-            background-color: $color-grey;
 
             @include breakpoint(mobile) {
                 display: none;

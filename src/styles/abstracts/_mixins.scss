@@ -19,7 +19,7 @@
         @media (max-width: $grid-container-width) { @content ; }
     }
     @else if $point == tablet {
-        @media (max-width: 50em) { @content ; }
+        @media (max-width: 870px) { @content ; }
     }
     @else if $point == mobile {
         @media (max-width: 37.5em)  { @content ; }

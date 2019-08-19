@@ -1,25 +1,27 @@
 <template>
     <footer class="footer">
-        <div class="container flex">
-            <div class="col-4">
-                <img src="../assets/images/artevelde.png" style="width: 150px">
+        <div class="container flex flex--center" style="height: 100px">
+            <div class="footer-social__block">
+                <ul class="footer-social-list">
+                    <li class="footer-social-list__item">
+                        <a class="footer-social-list__link" href="https://www.facebook.com/groups/471776783555817/">
+                            <img class="footer-social-list__symbol" src="../assets/icons/icon-facebook-white.svg">
+                        </a>
+                    </li>
+                    <li class="footer-social-list__item">
+                        <a class="footer-social-list__link" href="https://www.instagram.com/3dprintingartevelde/">
+                            <img class="footer-social-list__symbol" src="../assets/icons/icon-instagram-white.svg">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-4">
-                <h4 class="footer__title">Contact</h4>
-                <p>
-                    Campus Kantienberg <br>
-                    Voetweg 66 <br>
-                    9000 Gent
-                </p>
-            </div>
-            <div class="col-4">
-                <h4 class="footer__title">Volg ons</h4>
-                <p class="footer__social">
-                    We posten leuke projecten, evenementen en opportuniteiten...<br>
-                    <a href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </p>
+            <div class="footer-logo__block">
+                <div class="footer__logo">
+                    <img src="../assets/icons/artevelde.png">
+                </div>
+                <span class="footer__logo-caption">
+                    Copyright © 2019 Arteveldehogeschool
+                </span>
             </div>
         </div>
     </footer>
@@ -32,35 +34,51 @@ export default {
 </script>
 
 <style lang="scss">
-    /* TODO: Fix footer */
     .footer {
-        border-top: 1px solid #eee;
-        border-bottom: 6px solid $color-primary;
-        padding: 3rem 2rem;
+        height: 100px;
+        background-color: $color-secondary; 
 
-        @include breakpoint(mobile) {
-            padding: 2rem 0;
-        }
+        &__logo {
+            width: 75px;
 
-        &__title {
-            margin-top: 0;
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-            @include breakpoint(mobile) {
-                margin-top: 2rem;
-                margin-bottom: 1.5rem;
+            &-caption {
+                font-size: 0.8rem;
+                color: white;
+                padding: 0.5rem 0;
             }
         }
 
-        &__social {
-            & i {
-                margin-top: 10px;
-                font-size: 1.5rem;
-                transition: all .3s ease;
+        &-logo__block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
-                &:hover {
-                    color: $color-primary;
-                }
-            }
+            margin-left: 2rem;
+        }
+    }
+
+    .footer-social-list {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        
+        &__link {
+            display: block;
+            text-decoration: none;
+        }
+
+        &__symbol {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 1rem;
         }
     }
 </style>

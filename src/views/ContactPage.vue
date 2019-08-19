@@ -1,30 +1,49 @@
 <template>
     <main>
-        <section class="section contact m-top" style="margin-top: 8rem">
-            <div class="container">
-                <h2 class="lowercase">Nog een vraag? Laat het ons weten!</h2>
-            </div>
-            <div class="container flex">
-                <div class="contact__column col-4">
-                    <div class="contact__block">
+        <div class="container contact__container m-top">
+            <section class="contact">
+                <h3>Nog een vraag? Laat het ons weten!</h3>
+                <section class="contact-form">
+                    <form action="https://send.pageclip.co/Ew0DBMmNoZbGFQ9ghGctVEzrwz1QZpdq/artevelde-contact-form" class="pageclip-form" method="post">
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="email" :class="['form-control', { 'is-danger': errors.has('email') }]" name="email" id="email" v-validate="'required|email'" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Naam</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Onderwerp</label>
+                            <input type="text" :class="['form-control', { 'is-danger': errors.has('subject') }]" name="subject" id="subject" v-validate="'required'" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Bericht</label>
+                            <textarea class="form-control" name="message" id="message" rows="10"></textarea>
+                        </div>
+                        <button class="pageclip-form__submit btn btn--primary" type="submit"  @click="validateBeforeSubmit">
+                            <span>Verzend</span>
+                        </button>
+                    </form>
+                </section>
+                <section class="contact-info">
+                    <div class="contact-info__block">
                         <h4>Tom Neuttiens</h4>
                         <p>
                             <span>Docent 3D Modeling</span>
                             <br> 
-                            <a class="orange">tom.neuttiens@arteveldehs.be</a> 
+                            <a href="mailto:tom.neuttiens@arteveldehs.be" class="link--mail">tom.neuttiens@arteveldehs.be</a> 
                         </p>
                     </div>
-                    <div class="contact__block">
+                    <div class="contact-info__block">
                         <h4>Inge Sintobin</h4>
                         <p>
-                            <span>Docent 3D Modeling</span>
+                            <span>Coördinator</span>
                             <br> 
-                            <a class="orange">inge.sintobin@arteveldehs.be</a> 
+                            <a href="mailto:inge.sintobin@arteveldehs.be" class="link--mail">inge.sintobin@arteveldehs.be</a> 
                         </p>
                     </div>
-                </div>
-                <div class="contact__column col-4">
-                    <div class="contact__block">
+                    <div class="contact-info__block">
                         <h4>Contact</h4>
                         <p>
                             Campus Kantienberg
@@ -32,49 +51,35 @@
                             Voetweg 66
                             <br>
                             9000 Gent
-                        </p>
-                        <p class="orange">
+                            <br>
                             +32 45 41 25 21
                             <br>
+                            info@arteveldehs.be
                         </p>
                     </div>
-                </div>
-                <div class="contact__column col-4">
-                    <div class="contact__block">
-                        <h4>Sociale Media</h4>
-                        <p class="contact__social">
-                            Volg ons en kom meer te weten<br>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </p>
+                    <div class="contact-info__block">
+                        <h4>Volg ons</h4>
+                        <ul class="contact-social-list">
+                            <li class="contact-social-list__item">
+                                <a class="contact-social-list__link" href="https://www.facebook.com/groups/471776783555817/">
+                                    <img class="contact-social-list__symbol" src="../assets/icons/icon-facebook-black.svg">
+                                </a>
+                            </li>
+                            <li class="contact-social-list__item">
+                                <a class="contact-social-list__link" href="https://www.instagram.com/3dprintingartevelde/">
+                                    <img class="contact-social-list__symbol" src="../assets/icons/icon-instagram-black.svg">
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="section map">
+                </section>
+            </section>
+        </div>
+        <section class="map">
             <vue-map
                 :accessToken="token"
                 :mapOptions="mapOptions"
             ></vue-map>
-        </section>
-        <section class="section contact-form">
-            <h3>Contactformulier</h3>
-            <form class="form">
-                <div class="form-group">
-                    <label for="name">Naam</label>
-                    <input type="text" class="form-control" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Onderwerp</label>
-                    <input type="text" class="form-control" name="subject">
-                </div>
-                <div class="form-group"><link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
-                    <label for="message">Bericht</label>
-                    <textarea class="form-control" name="message" rows="10"></textarea>
-                </div>
-                <button class="btn btn--primary">Schrijf je in</button>
-            </form>
         </section>
     </main>
 </template>
@@ -96,61 +101,122 @@ export default {
                 style: 'mapbox://styles/mapbox/light-v9',
                 center: [3.726710, 51.041052],
                 zoom: 15,
-            }
+            },
+            hasErrors: true,
+        }
+    },
+    methods: {
+        validateBeforeSubmit() {
+            this.$validator.validateAll().then((result) => {
+                if (result) {
+                    alert('Vraag is verstuurd. Bedankt!');
+                    return;
+                }
+            });
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .orange {
-        color: $color-primary;
-    }
-    .lowercase {
-        text-transform: inherit;
-    }
-    .contact-form {
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
+    .contact {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 4rem 0;
 
-        @include breakpoint(mobile) {
-            padding: 0 1.5rem;
+        @include breakpoint(tablet) {
+            flex-direction: column;
         }
     }
-    .contact-form > h3 {
-        margin-bottom: 4rem;
+
+    .contact-form {
+        flex: 1 1 66%;
     }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1 1 calc(33% - 2rem);
+
+        // padding-bottom: 4rem;
+        padding-left: 4rem;
+        
+        @include breakpoint(tablet) {
+            padding-left: 0;
+        }
+
+        &__block {
+            & > h4 {
+                margin-bottom: 0;
+                line-height: 1.4;
+            }
+            & > p {
+                margin-top: 0;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    .contact-social-list {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        
+        &__link {
+            display: block;
+            text-decoration: none;
+        }
+
+        &__symbol {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 1rem;
+        }
+
+    }
+
     .form-group {
         display: flex;
         flex-direction: column;
-        margin: 2rem 0;
-    }
-    .form-group > label {
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        text-align: left;
-    }
-    .form-control {
-        background: #EBEBEB;
-        border-radius: 8px;
-    }
-    .form-control[type="text"] {
-        height: 40px;
-    }
-    .form {
-        text-align: center;
-    }
-    .contact__social {
-        & i {
-            margin-top: 10px;
-            font-size: 1.5rem;
-            transition: all .3s ease;
+        margin-bottom: 1rem;
 
-            &:hover {
-                color: $color-primary;
-            }
+        & > label {
+            margin-bottom: 0.75rem;
+            text-align: left;
         }
+    }
+
+    .form-control {
+        display: flex;
+        background-color: $color-grey;
+        border: 2px solid $color-grey;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.is-danger {
+            border-color: red;
+        }
+
+        &[type="text"], &[type="email"] {
+            padding: 1rem;
+        }
+    }
+
+    .form-help {
+        margin-top: 0.5rem;
+
+        &.is-danger {
+            color: red;
+        }
+    }
+
+    textarea {
+        padding: 1rem;
+        resize: vertical;
     }
 </style>

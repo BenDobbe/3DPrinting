@@ -1,17 +1,23 @@
 <template>
     <article class="class">
-        <picture class="class__thumbnail">
-            <div class="class__overlay"></div>
-            <img :src="item._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url">
-        </picture>
-        <section class="class__content">
-            <h4 class="class__title">
-                {{ item.title.rendered }}
-            </h4>
-            <p v-html="item.content.rendered"></p>
-        </section>
-        <section class="class__footer">
-            <a class="btn btn--link" href="https://www.arteveldehogeschool.be/opleidingen/bijscholingen-en-studiedagen/masterclasses-3d-modeling-printing">Bekijk deze class</a>
+        <figure v-if="item._embedded" class="class__thumbnail">
+            <img :src="item._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url">
+        </figure>
+        <section class="class__body">
+            <section class="class__content">
+                <div class="class__heading">
+                    <h4 class="class__title">
+                        {{ item.title.rendered }}
+                    </h4>
+                    <h5 v-if="item.acf" class="class__subtitle">
+                        {{ item.acf.sub_title }}
+                    </h5>
+                </div>
+                <p v-html="item.content.rendered"></p>
+            </section>
+            <section class="class__footer">
+                <a class="btn btn--primary" :href="item.acf.register_link || 'https://www.arteveldehogeschool.be/opleidingen/bijscholingen-en-studiedagen/masterclasses-3d-modeling-printing'">Bekijk deze class</a>
+            </section>
         </section>
     </article>
 </template>
@@ -26,54 +32,29 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .class {
         position: relative;
-        flex: 0 0 calc(33% - 12px);
-        margin-bottom: 1.5rem;
+        width: 100%;
         background: #F9F9F9;
-        border-radius: $border-radius-primary;
-        overflow: hidden;
 
-        @include breakpoint(tablet) {
-            flex: 0 0 50%;
+        &__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 450px;
         }
-
-        @include breakpoint(mobile) {
-            flex: 1 1 100%;
-        }
-
-        /* TODO: Fix responsiveness */
-        &:nth-child(3n + 2) {
-            margin-left: 1rem;
-            margin-right: 1rem;
-
-            @include breakpoint(tablet) {
-                margin-left: 0rem;
-                margin-right: 0rem;
-            }
-        }
-
-        /* TODO: Fix resizing when window size gets smaller */
-        // &__overlay {
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     width: 100%;
-        //     min-height: 256px;
-        //     background-color: $color-secondary;
-        //     opacity: 0.2;
-        // }
 
         &__thumbnail {
-            background: $color-grey;
             display: block;
-            height: 250px;
+            height: 300px;
+            padding: 0;
+            margin: 0;
             overflow: hidden;
 
             & > img {
                 width: 100%;
-                height: 250px;
+                height: 300px;
                 object-fit: cover;
             }
         }
@@ -81,6 +62,7 @@
         &__content { 
             padding: 2rem;
             min-height: 280px;
+            flex: 1;
         }
 
         &__title {
@@ -89,6 +71,10 @@
             &--light {
                 font-weight: 300;
             }
+        }
+
+        &__subtitle {
+            margin-top: 1rem;
         }
 
         &__footer {

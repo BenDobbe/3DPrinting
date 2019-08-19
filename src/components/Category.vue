@@ -1,10 +1,10 @@
 <template>
-    <span :class="[active ? 'is-active tag' : 'tag']" @click="setFilter(category)">{{ name }}</span>
+    <span class="category" @click="onClickCategory">{{ name }}</span>
 </template>
 
 <script>
 export default {
-    name: 'Tag',
+    name: 'Category',
     props: {
         name: {
             type: String,
@@ -15,34 +15,36 @@ export default {
         },
         category: {
             type: Number
+        },
+        projects: {
+            type: Array
         }
     },
     data() {
         return {
-            currentFilter: 0,
+            isActive: false,
         }
     },
     methods: {
-        setFilter(filter) {
-            this.currentFilter = filter;
-            console.log(this.currentFilter);
+        onClickCategory(e) {            
+            this.$emit('selectedCategory', this.name);
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .tag {
+    .category {
         display: inline-block;
-        color: #bbb;
-        font-weight: 700;
+        color: #888;
         font-size: 1.3em;
         margin-bottom: 1rem;
         margin-right: 1rem;
         cursor: pointer;
 
         &.is-active {
-            color: $color-secondary;
+            color: #141414;
+            text-shadow: 0 0 .65px #141414, 0 0 .65px #141414;
         }
     }
 </style>

@@ -31,12 +31,15 @@ h2 {
 }
 
 h3 {
-    @include font-styles(2rem, $color-primary, $font-heading-weight - 100);
+    @include font-styles(1.8rem, $color-text, $font-heading-weight - 100);
+
+    @include breakpoint(tablet) {
+        font-size: 1.5rem;
+    }
 }
 
 h4 {
-    @include font-styles(1.8rem, $color-text, $font-heading-weight - 100);
-    margin-bottom: 1rem;
+    @include font-styles(1.2rem, $color-text, $font-heading-weight - 100);
 }
 
 p {
@@ -44,7 +47,6 @@ p {
 }
 
 .text {
-    
     &--center {
         text-align: center;
     }
@@ -52,4 +54,11 @@ p {
     &--bold {
         @include font-styles(1rem, #363636, $font-heading-weight - 100, 1.4); 
     } 
+}
+
+.link {
+
+    &--mail {
+        color: $color-secondary;
+    }
 }

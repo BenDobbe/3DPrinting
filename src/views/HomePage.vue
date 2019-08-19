@@ -1,83 +1,38 @@
 <template>
   <main>
-      <vue-hero></vue-hero>
-      <!-- Carousel --> 
-      <section class="section intro">
-        <div class="container flex flex--reverse">
-          <div class="intro--left" v-scroll-reveal>
-            <div class="intro__content">
-              <h3 class="intro__title">EEN WERELD VAN 3D</h3>
-              <p class="intro__body">Een eenjarige opleiding, gespreid over 2 masterclasses waarin je ondergedompeld wordt in de kunst van het 3D-printen en het modelleren van objecten. Wie met een 3D-printer aan de slag wil en niet enkel bestaande digitale objecten uit online databases wil printen, moet zich trainen in het designen en modelleren van 3D-objecten. Aan de hand van talrijke workshops neemt deze cursus je stap voor stap mee in dit boeiende proces.</p>
-              <router-link to="classes" class="btn btn--secondary">Onze Classes</router-link>
-            </div>
-          </div>
-          <div class="intro--right" v-scroll-reveal>
-            <vue-carousel></vue-carousel>
-          </div>
-        </div>
-      </section>
-      <!-- Masonry Gallery --> 
-      <section class="section masonry" >
-        <div class="container">
-          <h2 class="text--center">Showcase</h2>
-          <vue-gallery  v-scroll-reveal="{ duration: 1000 }"></vue-gallery>
-          <div class="masonry__button">
-            <router-link to="showcase" class="btn btn--primary">Onze projecten</router-link>
-          </div>
-        </div>
-      </section>
-      <!-- Instagram Feed -->
-      <section class="section feed">
-        <div class="feed--left">
-          <div class="feed__icon">
-            <img src="../assets/images/instagram.svg" style="width: 75px">
-            <span class="feed__social-name">@PrintArtevelde</span>
-          </div>
-        </div>
-        <div class="feed--right">
-          <div class="feed__wrapper" v-scroll-reveal="{ distance: '40px', origin: 'right' }">
-            <template v-for="(image, index) in posts">
-              <div class="feed__image"  v-if="index <= 7" :key="image.id" :style="{ 'background-image': 'url(' + image.images.thumbnail.url + ')' }"></div>
-            </template>
-          </div>
-        </div>
-      </section>
+      <vue-hero v-if="!this.isLoading" :images="this.sliderImages"></vue-hero>
   </main>
 </template>
 
 <script>
   import HeroVue from '../components/Hero.vue';
   import axios from 'axios';
-  import Slideshow from '../components/Slideshow.vue';
   import Gallery from '../components/Gallery.vue';
-  import Footer from '../components/Footer.vue';
   import VueCarousel from '../components/VueCarousel.vue';
   import { config } from '../config/';
+  import RestService from '../services/RestService';
 
   export default {
     name: 'HomePage',
     components: {
       'vue-hero': HeroVue,
-      'vue-slideshow': Slideshow,
       'vue-carousel': VueCarousel,
       'vue-gallery': Gallery,
-      'vue-footer': Footer,
     },
     data() {
       return {
-        posts: [],
-        token: config.INSTAGRAM_TOKEN,
+        sliderImages: [],
+        isLoading: true,
       }
     },
     created() {
-      this.fetchInstagram();
+      this.fetchSlider();
     },
     methods: {
-      async fetchInstagram() {
-        let response = await fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${this.token}`);
-        let data = await response.json();
-        this.posts = data.data;
-        console.log(this.posts);
+      async fetchSlider() {
+        const { data } = await RestService.get('/posts?slug=slider');
+        this.sliderImages = data;
+        this.isLoading = !this.isLoading;
       }
     }
   }

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <vue-navbar></vue-navbar>
+    <!-- Rendered views -->
     <router-view></router-view>
-    <vue-footer></vue-footer>
+    <vue-footer v-show="!($route.path==='/home') && !($route.path==='/showcase')"></vue-footer>
   </div>
 </template>
 
@@ -22,6 +23,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-</style>

@@ -2,7 +2,7 @@
     <div>
         <!-- Placeholder map if Mapbox fails loading --> 
         <img v-if="!isLoaded" src="../assets/images/map--gray.png" class="map"> 
-        <div  :id="(mapOptions.hasOwnProperty('container') ? mapOptions.container : 'map')" class="map"></div>
+        <div :id="(mapOptions.hasOwnProperty('container') ? mapOptions.container : 'map')" class="map"></div>
     </div>
 </template>
 
@@ -22,14 +22,14 @@ export default {
     },
     data () {
         return {
-            _map: null,
+            map: null,
             isLoaded: false,
             markerData: null
         }
     },
     mounted () {
         const map = this.initMap();
-        this._map = map;
+        this.map = map;
     },
     methods: {
         initMap() {
@@ -39,12 +39,16 @@ export default {
                 this.mapOptions.container = 'map';
             }
             
+            // Initiate the map
             const map = new mapboxgl.Map(this.mapOptions);
 
+            // Disable map rotation (right click + drag)
+            map.dragRotate.disable();
+            
+            // When map is loaded, add markers
             map.on('style.load', () => {
                 this.addMarkers(map);
                 this.isLoaded = !this.isLoaded;
-                
             });      
         },
         addMarkers(map) {
@@ -54,11 +58,11 @@ export default {
                     type: 'Feature',
                     geometry: {
                         type: 'Point',
-                        coordinates: this.mapOptions.center,
+                        coordinates: [3.728491617369082, 51.0410]
                     },
                     properties: {
-                        title: 'Arteveldehogeschool',
-                        description: 'Campus Kantienberg'
+                        title: 'Campus Mariakerke',
+                        description: 'Arteveldehogeschool'
                     }
                 }]
             };
@@ -69,6 +73,8 @@ export default {
 
                 new mapboxgl.Marker(el)
                     .setLngLat(marker.geometry.coordinates)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 })
+                    .setHTML('<h5>' + marker.properties.title + '</h5><p>' + marker.properties.description + '</p>'))
                     .addTo(map);
             });
         }
@@ -76,7 +82,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .map {
         width: 100%;
         height: 500px;
@@ -85,9 +91,31 @@ export default {
             height: 300px;
         }
     }
+
     .marker {
-        background: red;
+        background-image: url('../assets/icons/map-marker.svg');
+        background-size: cover;
         width: 50px;
         height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+        max-width: 500px;
+    }
+
+    .mapboxgl-popup-content {
+        text-align: center;
+
+        & > h5 {
+            font-size: 1.1rem;
+            text-transform: none;
+            margin-bottom: 0;
+        }
+        
+        & > p {
+            margin-top: 0.5rem;
+        } 
     }
 </style>

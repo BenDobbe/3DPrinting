@@ -7,7 +7,10 @@ import App from './App.vue'
 import router from './routes'
 import VueCarousel from 'vue-carousel'
 import VueScrollReveal from 'vue-scroll-reveal';
- 
+import VModal from 'vue-js-modal';
+import VeeValidate from 'vee-validate';
+import VueLazyload from 'vue-lazyload';
+
 // Using ScrollReveal's default configuration
 Vue.use(VueScrollReveal, {
   duration: 2000,
@@ -31,6 +34,12 @@ Vue.component('vue-dino', {
 })
 
 Vue.use(VueCarousel);
+
+Vue.use(VModal);
+
+Vue.use(VeeValidate);
+
+Vue.use(VueLazyload)
 
 new Vue({
   el: '#app',

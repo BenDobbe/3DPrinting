@@ -1,17 +1,16 @@
 // Libraries - Always after the main framework, before the site code
 
+// Import Abstracts
+@import './abstracts/mixins';
+@import './abstracts/variables';
 
-// Base Site Styling
+// Import Base Styling
 @import './base/reset';
 @import './base/base';
 @import './base/typography';
 
-// Components
+// Import Components
 @import './components/button';
-
-
-// Site-specific code
-// @import './components/HomePage.scss';
 
 
 

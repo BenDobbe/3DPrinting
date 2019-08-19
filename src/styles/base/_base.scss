@@ -5,6 +5,12 @@ html {
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -56,8 +62,14 @@ ul, ol {
         max-width: 100%;
         margin: 0 5rem;
 
-        @include breakpoint(mobile) {
+        @include breakpoint(tablet) {
             margin: 0 1.5rem;
+        }
+
+        @media screen and (max-width: 1500px) {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
     }
 }
@@ -66,6 +78,11 @@ ul, ol {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    &--center {
+        align-items: center;
+        justify-content: center;
+    }
 
     &--reverse {
         @include breakpoint(mobile) {

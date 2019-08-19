@@ -2,9 +2,12 @@
     <section class="banner">
         <div class="video-wrapper">
             <div class="overlay"></div>
+            <slot></slot>
             <vue-video></vue-video>
         </div>
-        <div class="banner__bg-image"></div>
+        <div class="banner__bg-image">
+            <slot></slot>
+        </div>
     </section>
 </template>
 
@@ -21,30 +24,30 @@
 
 <style lang="scss">
     .banner {
-        margin-top: 6rem;
-        background: #fff;
-        height: 300px;
+        height: 600px;
 
         @include breakpoint(tablet) {
-            height: 200px;
+            height: 350px;
         }
 
         &__bg-image {
             display: none;
-            background: url('../assets/images/masterclass2.jpg') no-repeat;
+            background: url('../assets/images/masterclass-edit.jpg') no-repeat;
             background-size: cover;
 
             @include breakpoint(tablet) {
                 display: block;
-                height: 200px;
+                height: 350px;
             }
         }
 
         .video-wrapper {
+            display: flex;
+            justify-content: center;
             position: relative;
-            height: 300px;
+            height: 600px;
             overflow: hidden;
-
+            
             @include breakpoint(tablet) {
                 display: none;
             }
@@ -54,11 +57,12 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: #141414;
-            opacity: 0.5;
             z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: #141414;
+            opacity: 0.7;
+            
         }       
     }
 </style>

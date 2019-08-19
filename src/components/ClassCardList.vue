@@ -1,5 +1,5 @@
 <template>
-    <section class="class-list flex">
+    <section class="class-list">
         <class-card 
             v-for="item in classes" 
             :key="item.id"
@@ -10,32 +10,22 @@
 
 <script>
 import ClassCard from './ClassCard';
-import RestService from '../services/RestService.js';
 
 export default {
     name: 'ClassCardList',
     components: {
         ClassCard
     },
-    data() {
-        return {
-            classes: [],
-        }
+    props: {
+        classes: Array,
     },
-    created() {
-        this.fetchClasses();
-    },
-    methods: {
-        async fetchClasses() {
-            const { data } = await RestService.get('/classes?_embed');            
-            this.classes = data;
-        }
-    }
 }
 </script>
 
-<style lang="scss" scoped> 
-    // .class-list {
-    //     justify-content: flex-start;
-    // }
+<style lang="scss"> 
+    .class-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-gap: 1em;
+    }
 </style>
