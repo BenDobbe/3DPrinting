@@ -2,8 +2,6 @@
 
 # 3D Modeling & Printing - Artevelde
 
-Template for the course **Mobile Development II** specialisation **New Media Development** in the department **Graphical and Digital Media** within **Artevelde University College Ghent**.
-
 Promotional website for the course **3D Modeling & Printing** within **Artevelde University College Ghent**
 
 Built with:
